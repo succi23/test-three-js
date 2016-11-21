@@ -58,29 +58,29 @@
             scene = new t.Scene()
 
             camera = new t.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-            camera.position.set(2,3,8);
+            camera.position.set(2,4,6);
 
             renderer = new t.WebGLRenderer();
             renderer.setSize(window.innerWidth, window.innerHeight);
 
             document.getElementById('content').appendChild(renderer.domElement);
 
-            // var hemilight = new t.HemisphereLight(0xffffff, 0xffffff, 0.6);
-            // hemilight.color.setHSL(0.6, 1, 0.6);
-            // hemilight.groundColor.setHSL(0.095, 1, 0.75);
-            // hemilight.position.set(0, 500, 0);
-            // scene.add(hemilight);
+            var hemilight = new t.HemisphereLight(0xffffff, 0xffffff, 0.6);
+            hemilight.color.setHSL(0.6, 1, 0.6);
+            hemilight.groundColor.setHSL(0.095, 1, 0.75);
+            hemilight.position.set(0, 500, 0);
+            scene.add(hemilight);
 
             var keylight = new t.DirectionalLight(0xffffff, 1);
             keylight.color.setHSL(0.1, 1, 0.8);
-            keylight.position.set(-2, 2 ,-2);
+            keylight.position.set(-20, 20 ,-20);
             keylight.position.multiplyScalar(50);
             scene.add(keylight);
 
             var filllight = new t.DirectionalLight(0xffffff, 1);
             filllight.color.setRGB(0.7, 0.7, 0.7);
             filllight.color.setHSL(0.1, 1, 1);
-            filllight.position.set(2, 2, -2);
+            filllight.position.set(20, 20, -20);
             filllight.position.multiplyScalar(50);
             scene.add(filllight);
 
@@ -116,6 +116,7 @@
                 // var material = new t.MeshFaceMaterial( materials );
                 var material = new t.MeshPhongMaterial( { map: t.ImageUtils.loadTexture('images/baked_ori.jpg') } );
                 bojog = new t.Mesh(geometry, material);
+                bojog.position.z = 1;
                 scene.add(bojog);
             });
 
